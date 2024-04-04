@@ -45,13 +45,24 @@
                     <option value="">Select one</option>
 
                     @foreach ($types as $element)
-                        <option value="{{ $element->id }}" 
-                            {{ $element->id == old('type_id') ? 'selected' : '' }}>
+                        <option value="{{ $element->id }}" {{ $element->id == old('type_id') ? 'selected' : '' }}>
                             {{ $element->name }}
                         </option>
                     @endforeach
                 </select>
             </div>
+
+
+            <div class="mb-3">
+                <label for="technologies" class="form-label">Select Technologies</label>
+                <select multiple class="form-select form-select-lg" name="technologies[]" id="technologies">
+                    <option value="">Select one</option>
+                    @foreach ($technologies as $element)
+                    <option value="{{ $element->id }}">{{ $element->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
 
 
             <div class="mb-3">
