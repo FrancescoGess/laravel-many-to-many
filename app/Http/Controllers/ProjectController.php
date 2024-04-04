@@ -58,6 +58,10 @@ class ProjectController extends Controller
 
         $new_project = Project::create($val_data);
 
+        if( $request->has('technologies')){
+            $new_project->technologies()->attach($request->technologies);
+        }
+
         return redirect()->route('dashboard.projects.index');
     }
 
