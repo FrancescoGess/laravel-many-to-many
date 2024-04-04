@@ -11,7 +11,7 @@ class StoreTypeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class StoreTypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => ['required', 'unique:projects', 'max:150'],
+            'content' => ['nullable'],
+            'cover_img' => ['nullable', 'image'],
+            'type_id' => ['nullable', 'exists:types,id'],
+            'technologies' => ['exists:technologies,id'] 
         ];
     }
 }
